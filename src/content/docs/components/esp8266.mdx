@@ -53,6 +53,15 @@ ESPHome supports two toolchains for building ESP8266 firmware. The toolchain det
 
 The `arduino` toolchain requires framework version 3.1.0 or newer, does not support a custom framework `source` or `platform_version`, and only supports the named boards from the board list; use `platformio` for custom boards. Options under `esphome: platformio_options:` are not applied by the `arduino` toolchain.
 
+The `arduino` toolchain uses compiler builds from
+[esphome-libs/xtensa-lx106-elf-toolchain](https://github.com/esphome-libs/xtensa-lx106-elf-toolchain/releases/), which
+are available for Linux (x86_64 and arm64), macOS (Apple Silicon and Intel) and Windows (x86_64). On other host
+systems, use the `platformio` toolchain.
+
+> [!NOTE]
+> On Apple Silicon Macs the `platformio` toolchain needs Rosetta 2, because its compiler is only built for Intel
+> Macs. The `arduino` toolchain runs natively and does not need it.
+
 **Example for using the native Arduino toolchain:**
 
 ```yaml
